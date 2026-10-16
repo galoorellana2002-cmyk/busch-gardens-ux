@@ -1,0 +1,94 @@
+/* Tokens compartidos con el portafolio: tipografía del sistema, azul #0071e3,
+   bordes redondeados y el degradado verde → azul de la tarjeta de Busch Gardens. */
+:root {
+  --white: #ffffff;
+  --paper: #fbfbfd;
+  --gray: #f5f5f7;
+  --ink: #1d1d1f;
+  --ink-2: #6e6e73;
+  --ink-3: #6e6e73;
+  --line: #d2d2d7;
+  --black: #000000;
+  --tile-dark: #161617;
+  --ink-on-dark: #f5f5f7;
+  --ink-2-on-dark: #a1a1a6;
+  --line-dark: #424245;
+  --blue: #0071e3;
+  --link: #0066cc;
+  --link-dark: #2997ff;
+  --green: #30d158;
+  --green-ink: #1a7f37;
+  --sky: #0a84ff;
+  --orange: #c93400;
+  --red: #d70015;
+  --grad: linear-gradient(90deg, #30d158, #0a84ff);
+  --grad-135: linear-gradient(135deg, #30d158, #0a84ff);
+  --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --radius: 28px;
+  --radius-s: 18px;
+}
+* { box-sizing: border-box; }
+html { background: var(--paper); scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font);
+  font-size: 17px; line-height: 1.47; letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img, svg { max-width: 100%; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font: inherit; letter-spacing: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 12px; top: -60px; z-index: 100; background: var(--ink); color: #fff;
+  padding: 10px 16px; border-radius: 12px;
+}
+.skip:focus { top: 12px; }
+
+.disclaimer {
+  background: var(--ink); color: var(--ink-on-dark); font-size: 13px; line-height: 1.35;
+  text-align: center; padding: 9px max(16px, env(safe-area-inset-left)); letter-spacing: -0.01em;
+}
+.disclaimer strong { font-weight: 600; }
+.disclaimer.compact { font-size: 12px; padding: 7px 12px; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0; line-height: 1; padding: 5px 9px; border-radius: 980px; white-space: nowrap;
+  vertical-align: middle;
+}
+.badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; }
+.badge.real { background: #e3f6e8; color: #0f5d26; }
+.badge.real::before { background: var(--green-ink); }
+.badge.ilus { background: #f0f0f3; color: #48484c; }
+.badge.ilus::before { border: 1.5px solid #6e6e73; width: 5px; height: 5px; }
+.on-dark .badge.ilus { background: #2c2c2e; color: #d1d1d6; }
+.on-dark .badge.ilus::before { border-color: #d1d1d6; }
+.on-dark .badge.real { background: #0f3d1d; color: #a6f0b9; }
+.on-dark .badge.real::before { background: #30d158; }
+
+.pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--blue); color: #fff; border-radius: 980px; border: 0; cursor: pointer;
+  font-size: 17px; padding: 12px 22px; min-height: 44px; text-decoration: none;
+}
+.pill:hover { background: #0077ed; text-decoration: none; }
+.pill.ghost { background: transparent; color: var(--link); box-shadow: inset 0 0 0 1px var(--link); }
+.pill.ghost:hover { background: var(--link); color: #fff; }
+.pill:disabled { background: #d2d2d7; color: #6e6e73; cursor: not-allowed; }
+.more { font-size: 17px; }
+.more::after { content: ' ›'; }
+.on-dark .more { color: var(--link-dark); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
